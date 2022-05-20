@@ -1,3 +1,15 @@
+/* Explanation
+Here we have separately checked for factors 2 and 3, until the
+number is divisible by them, we will print 2 or 3. 
+Now we don’t need to check for factors of 2 and 3. So we will check
+for remaining numbers which are (5, 7, 11, 13, 17, 19…) 
+which are 6 steps and 1 step away. So, we increased I by 6 and
+checked for i and i+2 as well. Until they divide number,
+we are going to print them. Now after the loop ended if n 
+becomes any prime number higher than 3 then we will simply print it.
+*/
+
+
 #include<iostream>
 using namespace std;
 
