@@ -1,5 +1,6 @@
 //timecomplexity is theta(no of set bit)
 
+//guves the number of set bits
 #include<iostream>
 using namespace std;
 
