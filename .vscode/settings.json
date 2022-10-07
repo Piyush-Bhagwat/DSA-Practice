@@ -1,6 +1,9 @@
 {
     "sqltools.connections": [],
     "files.associations": {
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "*.tcc": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp"
     }
 }
