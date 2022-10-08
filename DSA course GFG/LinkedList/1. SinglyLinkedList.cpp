@@ -143,27 +143,69 @@ void merge(Node* &head1,Node* &head2){
     temp->next = head2;
 }
 
+void insertSort(Node* &head, int n){ //insert the data at the sorted position
+    Node* temp = head;
+
+    if(head==NULL){
+        insertAtFront(head, n);
+        return;
+    }
+
+    if(head->data >= n){
+        insertAtFront(head, n);
+        return;
+    }
+
+    int i=1;
+    while(temp != NULL){
+        if(temp->data >= n){
+            insert(head, n, i);
+            return;
+        }
+        i++;
+        temp=temp->next;
+    }
+
+    append(head, n);
+}
+
+int atPos(Node* head, int pos){ //return the data at the given pos
+    int i=0;
+    while(head != NULL){
+        if(i == pos){
+            return head->data;
+        }
+        head=head->next;
+        i++;
+    }
+    return -1;
+}
+
+int middle(Node* head){ //returns the middle element of list
+    if(head == NULL){
+        return -1;
+    }
+
+    Node* slow = head;
+    Node* fast = head;
+
+    while(fast != NULL && fast->next!=NULL){
+        slow=slow->next;
+        fast = fast->next->next;
+    }
+    return slow->data;
+}
+
 main(){
     Node *head = NULL;
 
-    insertAtFront(head, 10);
-    insertAtFront(head, 20);
-    insertAtFront(head, 30);
-    insertAtFront(head, 5);
-    append(head, 55);
-    insert(head, 8, 6);
-
-    Node* head2 = NULL;
-    insertAtFront(head2, 54);
-    insertAtFront(head2, 98);
-    insertAtFront(head2, 43);
-    insertAtFront(head2, 3);
-    insertAtFront(head2, 56);
-
+    insertSort(head, 8);
+    insertSort(head, 2);
+    insertSort(head, 3);
+    insertSort(head, 1);
+    insertSort(head, 18);
+    insertSort(head, 12);
+    insertSort(head, 7);
     display(head);
-    display(head2);
-
-    merge(head, head2);
-    display(head);
-
+    cout<<middle(head);
 }

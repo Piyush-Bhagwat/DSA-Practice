@@ -23,11 +23,34 @@ void insertHead(Node* &head, int n){
         return;
     }
 
-    
+    Node* temp = head->next;
+    newNode->next = temp;
+    newNode->prev = head;
+    head->next = newNode;
+    temp->prev = newNode;
+
+    int data = head->data;
+    head->data = newNode->data;
+    newNode->data = data;
+}
+
+void display(Node* head){
+    Node* temp = head;
+    do{
+        cout<<temp->data<<' ';
+        temp = temp->next;
+    }while(temp!=head);
+    cout<<endl;
 }
 
 
 main()
 {
+    Node* hd =NULL;
+
+    insertHead(hd, 2);
+    insertHead(hd, 8);
+    insertHead(hd, 9);
+    display(hd);
     return 0;
 }
