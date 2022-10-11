@@ -196,6 +196,65 @@ int middle(Node* head){ //returns the middle element of list
     return slow->data;
 }
 
+int listLength(Node* head){
+    int n=0;
+
+    while(head!=NULL){
+        n++;
+        head=head->next;
+    }
+
+    return n;
+}
+
+int backPrint(Node* head, int pos){
+    Node* first = head;
+    Node* second= head;
+    int i=0;
+
+    while(second != NULL){  
+        if(i==pos){
+            break;
+        }
+        
+        second=second->next;
+        i++;
+    }
+
+    while(second != NULL){
+        second=second->next;
+        first = first->next;
+    }
+    return first->data;
+}
+
+void reverse(Node* &head){
+    Node* temp = head;
+    Node* cur = head;
+    Node* prev = NULL;
+
+    while(cur != NULL){
+        temp = cur->next;
+        cur->next = prev;
+        prev = cur;
+        cur = temp; 
+    }
+    head = prev;  
+}
+
+void reverseRecur(Node* head, Node* &newHead){
+
+    if(head == NULL || head->next == NULL){
+        newHead = head;
+        return;
+    }
+
+    Node* tail = head->next;
+    reverseRecur(tail, newHead);
+    tail->next = head;
+    head->next = NULL;
+}
+
 main(){
     Node *head = NULL;
 
@@ -207,5 +266,6 @@ main(){
     insertSort(head, 12);
     insertSort(head, 7);
     display(head);
-    cout<<middle(head);
+    reverseRecur(head, head);
+    display(head);
 }
