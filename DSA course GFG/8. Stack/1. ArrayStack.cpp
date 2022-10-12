@@ -5,7 +5,7 @@ class ArrStack{
     private:
         int *data;
         int size = 0;
-        int cap = 0;
+        int cap = 0;    
 
     public:
         ArrStack(){
